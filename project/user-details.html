@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User details</title>
+    <link rel="stylesheet" href="style-user-details.css">
+</head>
+<body>
+<button class="click" onclick="redirectToPage()">Prev</button>
+<h1>User Details</h1>
+<div id="data"></div>
+<button id="posts">Post of Current User</button>
+<script>
+    let url = new URL(location.href)
+    let json = url.searchParams.get('data')
+    let user = JSON.parse(json)
+    console.log(user)
+
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${user.id}/`)
+        .then(response => response.json())
+        .then(data => {
+            const dataElement = document.getElementById('data');
+            dataElement.innerHTML = `<div>id: ${data.id} Name: ${data.name}</div><div>Username: ${data.username}</div>
+            <div>Website: ${user.website}</div> <div>Phone: ${data.phone}</div> <div>Email: ${data.email}</div>
+            <div class="foo"><p>Company:</p> Name: ${user.company.name} CatchPhrase: ${user.company.catchPhrase} BS: ${user.company.bs}</div>
+            <div class="foo"><p>Address:</p> Street: ${user.address.street} Suite: ${user.address.suite} City: ${user.address.city} Zipcode: ${user.address.zipcode} Geo: ${user.address.geo.lat} ${user.address.geo.lng}</div>`;
+        })
+        .catch(error => console.error(error));
+
+
+    let postsVisible = false;
+    let postsContainer;
+
+    document.getElementById("posts").addEventListener("click", togglePosts);
+
+    function togglePosts() {
+        if (!postsVisible) {
+            getUserPosts();
+        } else {
+            hidePosts();
+        }
+        postsVisible = !postsVisible;
+    }
+
+    function getUserPosts() {
+        fetch(`https://jsonplaceholder.typicode.com/users/1/posts`)
+            .then(response => response.json())
+            .then(posts => UserPosts(posts));
+    }
+
+    function UserPosts(posts) {
+        if (!postsContainer) {
+            postsContainer = document.createElement('div');
+            postsContainer.id = 'posts-container';
+            document.body.appendChild(postsContainer);
+        }
+
+        for (const post of posts) {
+            let div = document.createElement('div');
+            div.classList.add('post');
+            let a = document.createElement('a');
+            a.innerHTML = `${post.title}`;
+            a.href = 'post-details.html?data=' + JSON.stringify(post);
+            div.appendChild(a);
+            postsContainer.appendChild(div);
+        }
+    }
+
+    function hidePosts() {
+        if (postsContainer) {
+            postsContainer.innerHTML = '';
+        }
+    }
+
+    function redirectToPage() {
+        window.location.href = "index.html";
+    }
+
+</script>
+</body>
+</html>

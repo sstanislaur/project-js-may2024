@@ -1,0 +1,79 @@
+body {
+    background: linear-gradient(#02061A, white, #02061A);
+    text-align: center;
+    font-family: "Bookman Old Style";
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+
+}
+
+h1 {
+    color: white;
+    font-size: 75px;
+    justify-content: center;
+    justify-items: center;
+    -webkit-text-stroke: 2px black;
+
+}
+
+div {
+    font-size: 20px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    color: black;
+    height: 200px;
+    width: 1000px;
+    margin-top: 20px;
+    background: silver;
+    border: 5px solid black;
+    background: linear-gradient(white, silver);
+    border-radius: 25px;
+    margin-left: 250px;
+}
+
+h2, h5, button {
+    font-family: "Arial Black";
+    font-size: 20px;
+}
+
+#data {
+    display: flex;
+    flex-direction: column;
+}
+
+#data div {
+    background: white;
+    border: 0;
+}
+
+#data h5 {
+    margin: 0;
+}
+
+div h5 {
+    margin-top: 25px;
+}
+
+h5 {
+    margin-top: -40px;
+}
+
+
+button {
+    border: black 1px solid;
+    display: flex;
+    position: absolute;
+    color: black;
+    margin-top: -180px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 15px;
+
+}
+
+button:hover {
+    background: linear-gradient(white, #02061A);
+    color: white;
+}
