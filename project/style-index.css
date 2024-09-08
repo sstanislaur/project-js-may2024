@@ -46,16 +46,4 @@ div {
     background: linear-gradient(white, silver);
     border-radius: 20px;
     justify-content: space-around;
-
-}
-
-h1 {
-    color: white;
-    margin-left: 530px;
-    font-size: 80px;
-    justify-content: center;
-    justify-items: center;
-    position: absolute;
-    -webkit-text-stroke: 2px black;
-
 }

@@ -10,7 +10,6 @@ h1 {
     justify-content: center;
     justify-items: center;
     -webkit-text-stroke: 2px black;
-    position: relative;
     text-align: center;
 }
 
@@ -86,7 +85,7 @@ a:hover {
 }
 
 a {
-    font-size: 18px;
+    font-size: 16px;
     border: black 3px solid;
     justify-content: center;
     justify-items: center;
@@ -101,8 +100,8 @@ a {
 
 .post {
     display: inline-grid;
+    width: 20%;
     height: 100px;
-    width: 25%;
     grid-template-rows: repeat(1, 3fr);
 }
 
